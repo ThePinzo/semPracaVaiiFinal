@@ -14,15 +14,14 @@
                             </div>
 
                         @endif
-                        {{--                        @if(Auth::user()->name == 'admin')--}}
-                        <div class="mb-3">
-                            <a href="{{route('article.create')}}" class="btn btn-success" role="button">Add new
-                                article</a>
+                        @auth
+                            <div class="mb-3">
+                                <a href="{{route('article.create')}}" class="btn btn-success" role="button">Add new
+                                    article</a>
+                            </div>
+                        @endauth
 
-                        </div>
-                        {{--                        @endif--}}
-
-                        {!!  $grid->show() !!}
+                            {!!  $grid->show() !!}
 
                     </div>
                 </div>

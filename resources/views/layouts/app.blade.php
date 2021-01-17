@@ -36,7 +36,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     @auth
-                        @if(Auth::user()->name == 'admin')
+                        @if(Auth::user()->email == 'admin@admin.admin')
                             <a class="nav-link" href="{{route('user.index')}}">{{__('Users')}}</a>
                         @endif
                     @endauth

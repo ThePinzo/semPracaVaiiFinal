@@ -19,8 +19,11 @@
     </div>
 
 {{--    <div class="form-group">--}}
-{{--        <label for="edible">Edible</label>--}}
-{{--        <input type="checkbox" class="form-control" id="edible" name="edible" value="{{@$model->edible}}">--}}
+{{--        <label class="jedla" for="jedla">Vyber druh huby:</label><br>--}}
+{{--        <select id="jedla" name="jedla">--}}
+{{--            <option value="">Jedlé</option>--}}
+{{--            <option value="">Jedovaté</option>--}}
+{{--        </select><br>--}}
 {{--    </div>--}}
 
     <div class="form-group">

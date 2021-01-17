@@ -14,7 +14,7 @@
                             </div>
 
                         @endif
-                        @if(Auth::user()->name == 'admin')
+                        @if(Auth::user()->email == 'admin@admin.admin')
                             <div class="mb-3">
                                 <a href="{{route('user.create')}}" class="btn btn-success" role="button">Add new
                                     user</a>
@@ -22,7 +22,7 @@
                             </div>
                         @endif
 
-                            {!!  $grid->show() !!}
+                        {!!  $grid->show() !!}
 
                     </div>
                 </div>

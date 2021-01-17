@@ -25,14 +25,17 @@ class ArticleController extends Controller
         $grid->setColumn('title', 'Title')
             ->setColumn('text', 'Text')
             ->setActionColumn(['wrapper' => function ($value, $row) {
-                if (Auth::user()->name == $row->author) {
-                    return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
+                if (Auth::user() != null) {
+                    if (Auth::user()->id == $row->authorID) {
+                        return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
                         <a href="' . route('article.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-sm btn-danger" data-confirm="Are you sure?">Delete</a> ';
-                } elseif (Auth::user()->name == 'admin') {
-                    return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
+                    } elseif (Auth::user()->email == 'admin@admin.admin') {
+                        return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
                   <a href="' . route('article.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-sm btn-danger" data-confirm="Are you sure?">Delete</a>';
+                    }
                 }
             }]);
+
         return view('article.index', ['grid' => $grid]);
     }
 
