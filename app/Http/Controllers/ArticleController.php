@@ -60,7 +60,7 @@ class ArticleController extends Controller
         ]);
 
         $article = Article::create($request->all());
-
+        $article->authorID = Auth::user()->id;  //TOTO JE MOJ KAMARAD
         $article->save();
         return redirect()->route('article.index');
     }

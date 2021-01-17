@@ -24,7 +24,7 @@ class Article extends Authenticatable
         'title',
         'text',
         'edible',
-        'author',
+        'authorID',
     ];
 
     protected $hidden = [
