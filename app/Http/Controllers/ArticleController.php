@@ -65,8 +65,10 @@ class ArticleController extends Controller
         $article = Article::create($request->all());
         $article->authorID = Auth::user()->id;  //TOTO JE MOJ KAMARAD
         $article->save();
-        return redirect()->route('article.index');
+        return redirect()->route('article.show');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -74,9 +76,10 @@ class ArticleController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $articles = Article::all()->toArray();
+        return view('article.showAll', compact('articles'));
     }
 
     /**

@@ -17,13 +17,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{--    <link rel="stylesheet" href="{{ asset('css/mojCSS.css') }}">--}}
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-image: url("{{asset('img/Huby.jpg')}}");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{asset('img/logo.png')}}" alt="Home">
                 {{ config('app.name', 'Laravel') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,13 +45,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    @auth
-                        @if(Auth::user()->email == 'admin@admin.admin')
-                            <a class="nav-link" href="{{route('user.index')}}">{{__('Users')}}</a>
-                        @endif
-                    @endauth
-                    <a class="nav-link" href="{{route('article.index')}}">{{__('Articles')}}</a>
-{{--                        <a class="nav-link" href="{{route('')}}">{{__('Gallery')}}</a>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('article.show')}}">{{__('Articles')}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('gallery.index')}}">{{__('Gallery')}}</a>
+                    </li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -62,11 +72,22 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
 
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->email == 'admin@admin.admin')
+                                    <a class="dropdown-item" href="{{route('user.index')}}">{{__('Edit users')}}</a>
+                                    <a class="dropdown-item"
+                                       href="{{route('user.edit',Auth::user()->id)}}">{{__('Edit profile')}}</a>
+                                @else
+                                    <a class="dropdown-item"
+                                       href="{{route('user.edit',Auth::user()->id)}}">{{__('Edit profile')}}</a>
+                                @endif
+                                <a class="dropdown-item" href="{{route('article.index')}}">{{__('Edit articles')}}</a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

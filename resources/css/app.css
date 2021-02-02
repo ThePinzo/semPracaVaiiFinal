@@ -1,0 +1,6 @@
+body{
+    background-repeat: no-repeat;
+    background-image: url("public/img/Huby.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}

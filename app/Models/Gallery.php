@@ -3,14 +3,16 @@
 
 namespace App\Models;
 
+
+//use App\Core\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Article extends Authenticatable
+class Gallery extends Model
 {
+
     use HasFactory, Notifiable, SoftDeletes;
 
     /**
@@ -19,9 +21,7 @@ class Article extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'title',
-        'text',
-        'authorID',
+        'path'
     ];
 
 

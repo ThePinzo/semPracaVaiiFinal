@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -15,14 +14,10 @@
 
                         @endif
                         @if(Auth::user()->email == 'admin@admin.admin')
-                            <div class="mb-3">
-                                <a href="{{route('user.create')}}" class="btn btn-success" role="button">Add new
-                                    user</a>
-
-                            </div>
+                            {!!  $grid->show() !!}
+                        @else
+                            <div class="card-header">{{ __('Access forbidden') }}</div>
                         @endif
-
-                        {!!  $grid->show() !!}
 
                     </div>
                 </div>
