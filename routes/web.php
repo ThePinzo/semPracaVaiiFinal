@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TipController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('tip', TipController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\TipController@index')->name('/');
 
 Auth::routes();
 
@@ -39,5 +39,6 @@ Route::group(['middleware' => ['auth']], function () {
 Route::resource('gallery', GalleryController::class);
 //Route::get('gallery/index ', [App\Http\Controllers\GalleryController::class, 'index'])->name('gallery.index');
 Route::get('article/show ', [App\Http\Controllers\ArticleController::class, 'show'])->name('article.show');
+
 
 
