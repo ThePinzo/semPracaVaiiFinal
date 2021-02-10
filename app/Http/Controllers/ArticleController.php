@@ -28,10 +28,10 @@ class ArticleController extends Controller
                 if (Auth::user() != null) {
                     if (Auth::user()->id == $row->authorID) {
                         return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="' . route('article.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-sm btn-danger" data-confirm="Are you sure?">Delete</a> ';
+                        <button value="' . $row->id. '" title="Delete" class="btn btn-sm btn-danger vymazButton">Delete</button>';
                     } elseif (Auth::user()->email == 'admin@admin.admin') {
                         return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
-                  <a href="' . route('article.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-sm btn-danger" data-confirm="Are you sure?">Delete</a>';
+                  <button value="' . $row->id . '" title="Delete" class="btn btn-sm btn-danger vymazButton">Delete</button>';
                     }
                 }
             }]);
@@ -67,7 +67,6 @@ class ArticleController extends Controller
         $article->save();
         return redirect()->route('article.show');
     }
-
 
 
     /**
@@ -108,7 +107,7 @@ class ArticleController extends Controller
 
 
         $article->update($request->all());
-        return redirect()->route('article.index');
+        return redirect()->route('article.show');
     }
 
     /**
@@ -117,9 +116,12 @@ class ArticleController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Article $article)
+
+    public function destroy($id)
     {
+        $article = Article::find($id);
         $article->delete();
-        return redirect()->route('article.index');
+//        return redirect()->route('article.index');
+        return json_encode(array('statusCode' => 200));
     }
 }

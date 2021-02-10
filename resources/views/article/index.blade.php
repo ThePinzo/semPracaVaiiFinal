@@ -22,15 +22,18 @@
                         @endauth
 
 
-{{--                            @foreach($articles as $article)--}}
-{{--                            <header></header>--}}
-{{--                            <p><?$article->?></p>--}}
-{{--                            @endforeach--}}
-                            {!!  $grid->show() !!}
+                        {{--                            @foreach($articles as $article)--}}
+                        {{--                            <header></header>--}}
+                        {{--                            <p><?$article->?></p>--}}
+                        {{--                            @endforeach--}}
+                        {!!  $grid->show() !!}
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
+
+

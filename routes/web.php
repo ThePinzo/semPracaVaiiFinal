@@ -33,7 +33,7 @@ Route::get('user/{user}/delete', [UserController::class, 'destroy'])->name('user
 Route::resource('article', ArticleController::class);
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('article/{article}/delete', [ArticleController::class, 'destroy'])->name('article.delete');
+    Route::get('article/{id}/delete', [ArticleController::class, 'destroy'])->name('article.delete');
 });
 
 Route::resource('gallery', GalleryController::class);
