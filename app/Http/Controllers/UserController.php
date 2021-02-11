@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->authorizeResource(User::class, 'user');
-    }
+//    public function __construct()
+//    {
+//        $this->authorizeResource(User::class, 'user');
+//    }
 
     /**
      * Display a listing of the resource.
@@ -32,7 +32,7 @@ class UserController extends Controller
                 if (Auth::user()->name == $row->name && Auth::user()->email != 'admin@admin.admin') {
                     return '<a href="' . route('user.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>';
                 } elseif (Auth::user()->email == 'admin@admin.admin') {
-                    return '<a href="' . route('user.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-sm btn-danger" data-confirm="Are you sure?">Delete</a> ';
+                    return '<button value="' . $row->id . '" title="Delete" class="btn btn-sm btn-danger vymazUzivatela">Delete</button>';
                 }
             }
             ]);
@@ -117,9 +117,11 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
         $user->delete();
-        return redirect()->route('user.index');
+//        return redirect()->route('user.index');
+        return json_encode(array('statusCode' => 200));
     }
 }

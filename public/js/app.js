@@ -727,15 +727,17 @@ $(document).on("click", ".vymazButton", function () {
     var $deletedElement = $(this).parent().parent();
 
 
-
     $.ajax({
         url: "article/" + id + "/delete",
         type: "GET",
         data: {
             _token: '{{ csrf_token() }}'
         },
+        beforeSend: function () {
+            return confirm("Are you sure?");
+        },
         success: function (dataResult) {
-           var dataResult = JSON.parse(dataResult);
+            var dataResult = JSON.parse(dataResult);
             if (dataResult.statusCode == 200) {
                 $deletedElement.fadeOut();
             }
@@ -743,3 +745,30 @@ $(document).on("click", ".vymazButton", function () {
     });
 
 });
+
+$(document).on("click", ".vymazUzivatela", function () {
+    var id = $(this).val();
+    var $deletedElement = $(this).parent().parent();
+
+
+    $.ajax({
+        url: "user/" + id + "/delete",
+        type: "GET",
+        data: {
+            _token: '{{ csrf_token() }}'
+        },
+        beforeSend: function () {
+            return confirm("Are you sure?");
+        },
+
+        success: function (dataResult) {
+            var dataResult = JSON.parse(dataResult);
+            if (dataResult.statusCode == 200) {
+                $deletedElement.fadeOut();
+            }
+        }
+    });
+
+});
+
+

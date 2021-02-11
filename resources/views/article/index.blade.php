@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Huby') }}</div>
+                    <div class="card-header">Huby</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -20,12 +20,6 @@
                                     article</a>
                             </div>
                         @endauth
-
-
-                        {{--                            @foreach($articles as $article)--}}
-                        {{--                            <header></header>--}}
-                        {{--                            <p><?$article->?></p>--}}
-                        {{--                            @endforeach--}}
                         {!!  $grid->show() !!}
 
                     </div>

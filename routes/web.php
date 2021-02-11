@@ -24,20 +24,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-//Route::group(['middleware' => ['auth']], function () {
 Route::resource('user', UserController::class);
-Route::get('user/{user}/delete', [UserController::class, 'destroy'])->name('user.delete');
-//});
+Route::get('user/{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
+
 
 Route::resource('article', ArticleController::class);
 Route::group(['middleware' => ['auth']], function () {
-
     Route::get('article/{id}/delete', [ArticleController::class, 'destroy'])->name('article.delete');
 });
 
 Route::resource('gallery', GalleryController::class);
-//Route::get('gallery/index ', [App\Http\Controllers\GalleryController::class, 'index'])->name('gallery.index');
 Route::get('article/show ', [App\Http\Controllers\ArticleController::class, 'show'])->name('article.show');
 
 

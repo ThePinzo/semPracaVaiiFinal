@@ -65,9 +65,9 @@ class UserPolicy
      * @param \App\Models\User $model
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user)
     {
-        return Auth::user()->email == 'admin@admin.admin';
+        return true;
     }
 
     /**
@@ -91,6 +91,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-//        return Auth::user()->name == 'admin';
+        return true;
     }
 }

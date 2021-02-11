@@ -31,7 +31,7 @@ class ArticleController extends Controller
                         <button value="' . $row->id. '" title="Delete" class="btn btn-sm btn-danger vymazButton">Delete</button>';
                     } elseif (Auth::user()->email == 'admin@admin.admin') {
                         return '<a href="' . route('article.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
-                  <button value="' . $row->id . '" title="Delete" class="btn btn-sm btn-danger vymazButton">Delete</button>';
+                  <button value="' . $row->id . '" title="Delete"  class="btn btn-sm btn-danger vymazButton">Delete</button>';
                     }
                 }
             }]);
@@ -63,7 +63,7 @@ class ArticleController extends Controller
         ]);
 
         $article = Article::create($request->all());
-        $article->authorID = Auth::user()->id;  //TOTO JE MOJ KAMARAD
+        $article->authorID = Auth::user()->id;
         $article->save();
         return redirect()->route('article.show');
     }
