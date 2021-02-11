@@ -1,6 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
-
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -99,7 +98,7 @@ abbr[data-original-title] {
     cursor: help;
     border-bottom: 0;
     -webkit-text-decoration-skip-ink: none;
-    text-decoration-skip-ink: none;
+    /*text-decoration-skip-ink: none;*/
 }
 
 address {
@@ -4895,9 +4894,9 @@ input[type=button].btn-block {
     }
 }
 
-.accordion {
-    overflow-anchor: none;
-}
+/*.accordion {*/
+/*    overflow-anchor: none;*/
+/*}*/
 
 .accordion > .card {
     overflow: hidden;

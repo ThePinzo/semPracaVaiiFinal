@@ -71,8 +71,6 @@ class ArticleController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -114,14 +112,12 @@ class ArticleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
      */
 
     public function destroy($id)
     {
         $article = Article::find($id);
         $article->delete();
-//        return redirect()->route('article.index');
         return json_encode(array('statusCode' => 200));
     }
 }
